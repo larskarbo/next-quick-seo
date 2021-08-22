@@ -18,19 +18,19 @@ export default function QuickSeo({
       <meta name='title' content={title} />
 
       {description && (
-        <>
+        <React.Fragment>
           <meta name='description' content={description} />
           <meta property='og:description' content={description} />
           <meta name='twitter:description' content={description} />
-        </>
+        </React.Fragment>
       )}
 
       {image && (
-        <>
+        <React.Fragment>
           <meta property='og:image' content={image} />
           <meta name='twitter:image' content={image} />
           <meta name='twitter:card' content='summary_large_image' />
-        </>
+        </React.Fragment>
       )}
     </Head>
   )
