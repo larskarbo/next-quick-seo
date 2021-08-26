@@ -1,7 +1,7 @@
 import * as React from 'react'
-import Head from 'next/head'
+import * as Head from 'next/head'
 
-export default function QuickSeo({
+export function QuickSeo({
   title,
   description,
   image
@@ -10,28 +10,29 @@ export default function QuickSeo({
   description?: string
   image?: string
 }) {
+  console.log('Head: ', Head);
+  console.log('Head.default: ', Head.default);
+  const HeadComponent = Head.default || Head
   return (
-    <Head>
+      <HeadComponent>
       <title>{title}</title>
-      <meta property='og:title' content={title} />
-      <meta name='twitter:title' content={title} />
-      <meta name='title' content={title} />
+      <meta property="og:title" content={title} />
+      <meta name="twitter:title" content={title} />
+      <meta name="title" content={title} />
 
-      {description && (
-        <React.Fragment>
-          <meta name='description' content={description} />
-          <meta property='og:description' content={description} />
-          <meta name='twitter:description' content={description} />
-        </React.Fragment>
-      )}
+      {description && <>
+        <meta name="description" content={description} />
+        <meta property="og:description" content={description} />
+        <meta name="twitter:description" content={description} />
+      </>}
 
       {image && (
-        <React.Fragment>
-          <meta property='og:image' content={image} />
-          <meta name='twitter:image' content={image} />
-          <meta name='twitter:card' content='summary_large_image' />
-        </React.Fragment>
+        <>
+          <meta property="og:image" content={image} />
+          <meta name="twitter:image" content={image} />
+          <meta name="twitter:card" content="summary_large_image" />
+        </>
       )}
-    </Head>
+      </HeadComponent>
   )
 }
