@@ -10,8 +10,6 @@ export function QuickSeo({
   description?: string
   image?: string
 }) {
-  console.log('Head: ', Head);
-  console.log('Head.default: ', Head.default);
   const HeadComponent = Head.default || Head
   return (
       <HeadComponent>
